@@ -55,6 +55,10 @@ namespace HZDCoreEditorUI.UI
                     type.InheritsGeneric(typeof(Decima.BaseCPtr<>)) ||
                     type.InheritsGeneric(typeof(Decima.BaseWeakPtr<>)))
                     return new TreeDataRefNode(parent, member, attributes);
+
+                if (type.InheritsGeneric(typeof(Decima.BaseHashMap<>)) ||
+                    type.InheritsGeneric(typeof(Decima.BaseHashSet<>)))
+                    return new TreeDataHashMapNode(parent, member, attributes);
             }
 
             if (overrideType.IsArray)
